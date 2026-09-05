@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentiam-lab"
+version = "0.1.0"
+description = "Open AI agent identity, authorization, MCP security, delegation, and accountability conformance lab"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+keywords = ["ai agent identity", "ai agent authorization", "ai agent iam", "mcp authorization", "mcp security", "workload identity", "non-human identity"]
+
+[project.scripts]
+agentiam = "agentiam.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

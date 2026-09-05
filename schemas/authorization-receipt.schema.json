@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Authorization Receipt",
+  "type": "object",
+  "required": ["receipt_version", "receipt_id", "timestamp", "agent_id", "human_or_service_principal", "delegation_id", "intent", "audience", "resource", "action", "policy_decision", "token_id_hash", "result_hash", "integrity"],
+  "properties": {
+    "receipt_version": {"const": "1.0"},
+    "receipt_id": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "agent_id": {"type": "string"},
+    "human_or_service_principal": {"type": "string"},
+    "delegation_id": {"type": "string"},
+    "parent_delegation_id": {"type": ["string", "null"]},
+    "intent": {"type": "string"},
+    "audience": {"type": "string"},
+    "resource": {"type": "string"},
+    "action": {"type": "string"},
+    "policy_decision": {"enum": ["ALLOW", "DENY", "ALLOW_WITH_APPROVAL"]},
+    "token_id_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "result_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "integrity": {
+      "type": "object",
+      "required": ["method", "value", "non_repudiation"],
+      "properties": {
+        "method": {"type": "string"},
+        "value": {"type": "string"},
+        "non_repudiation": {"type": "boolean"},
+        "warning": {"type": "string"}
+      }
+    }
+  }
+}

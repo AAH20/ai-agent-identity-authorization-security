@@ -1,0 +1,21 @@
+name: AgentIAM AI Agent Identity Conformance
+description: Test AI agent delegation, task-scoped authorization, MCP enforcement, anti-amplification, and revocation
+branding:
+  icon: key
+  color: blue
+inputs:
+  json-report:
+    description: JSON report destination
+    required: false
+    default: reports/agentiam.json
+  junit-report:
+    description: JUnit report destination
+    required: false
+    default: reports/agentiam.xml
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: python -m pip install "${{ github.action_path }}"
+    - shell: bash
+      run: agentiam test --json "${{ inputs.json-report }}" --junit "${{ inputs.junit-report }}"

@@ -1,0 +1,6 @@
+services:
+  conformance:
+    build: .
+    command: ["test", "--json", "/reports/conformance.json", "--junit", "/reports/junit.xml"]
+    volumes:
+      - ./reports:/reports
