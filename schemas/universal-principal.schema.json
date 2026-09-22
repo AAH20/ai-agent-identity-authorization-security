@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentiam.dev/schemas/universal-principal.schema.json",
+  "title": "AgentIAM Universal Principal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["principal_id", "kind", "owner_id", "trust_domain", "tenant_id", "risk_class", "active"],
+  "properties": {
+    "principal_id": {"type": "string", "minLength": 3, "maxLength": 256},
+    "kind": {
+      "enum": ["human", "service", "workload", "agent", "model", "tool", "device", "robot", "vehicle", "biometric_assertion", "data_product"]
+    },
+    "owner_id": {"type": "string", "minLength": 3},
+    "trust_domain": {"type": "string", "minLength": 3},
+    "tenant_id": {"type": "string", "minLength": 1},
+    "risk_class": {"enum": ["standard", "elevated", "critical"]},
+    "jurisdiction": {"type": "string"},
+    "active": {"type": "boolean"},
+    "attributes": {"type": "object", "additionalProperties": {"type": "string"}}
+  }
+}

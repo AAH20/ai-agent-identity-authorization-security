@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentiam.dev/schemas/authorization-request.schema.json",
+  "title": "AgentIAM Contextual Authorization Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["request_id", "principal_id", "accountable_owner_id", "delegation_id", "purpose", "resource", "action", "environment", "tenant_id", "policy_revision", "risk_score", "approvals", "device_attested", "context_refs"],
+  "properties": {
+    "request_id": {"type": "string", "minLength": 3},
+    "principal_id": {"type": "string", "minLength": 3},
+    "accountable_owner_id": {"type": "string", "minLength": 3},
+    "delegation_id": {"type": "string", "minLength": 3},
+    "purpose": {"type": "string", "minLength": 1},
+    "resource": {"type": "string", "minLength": 1},
+    "action": {"type": "string", "minLength": 1},
+    "environment": {"type": "string", "minLength": 1},
+    "tenant_id": {"type": "string", "minLength": 1},
+    "policy_revision": {"type": "string", "minLength": 1},
+    "risk_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "approvals": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "device_attested": {"type": "boolean"},
+    "safety_state": {"type": ["string", "null"]},
+    "model_digest": {"type": ["string", "null"]},
+    "context_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+  }
+}

@@ -22,7 +22,7 @@ principal + agent + delegation chain + intent + audience
           + resource + action + runtime context + approval
 ```
 
-## Five executable conformance scenarios
+## Nine executable conformance scenarios
 
 | ID | Scenario | Required result |
 |---|---|---|
@@ -31,6 +31,10 @@ principal + agent + delegation chain + intent + audience
 | AIA-MCP-001 | Agent calls an MCP resource | Valid call succeeds; wrong audience and stolen bearer fail |
 | AIA-DELEG-001 | Child asks for additional authority | Authority amplification fails closed |
 | AIA-REV-001 | Owner revokes the parent | Parent and descendant authority stop immediately |
+| AIA-PRINC-001 | Human, agent and robot identities enter one registry | Type, accountable owner, tenant and trust domain remain explicit |
+| AIA-CTX-001 | Agent changes the authorized purpose | Purpose-confused request fails closed |
+| AIA-PHYS-001 | Agent requests a physical robot action | Attestation, safety readiness, model identity and evidence obligations are mandatory |
+| AIA-PAM-001 | Material privilege requires two approvers | Insufficient approval remains pending; the configured quorum permits only the scoped action |
 
 ## Run it
 
@@ -98,6 +102,11 @@ Decision + integrity receipt + assurance evidence
 - Token and result hashing in receipts
 - Explicit distinction between integrity and non-repudiation
 - OPA reference policy
+- Universal human, workload, agent, device, robot and vehicle principal model
+- Tenant and purpose enforcement in the decision plane
+- Risk-adaptive approval decisions
+- Short-lived physical-action leases capped at 30 seconds
+- Robot Black Box and independent-safety-controller obligations
 
 ## Vulnerable and controlled examples
 
@@ -122,6 +131,14 @@ The machine-readable receipt records:
 
 See [`schemas/authorization-receipt.schema.json`](schemas/authorization-receipt.schema.json).
 
+The expanded trust-fabric contracts are also published as JSON Schema:
+
+- [`universal-principal.schema.json`](schemas/universal-principal.schema.json)
+- [`delegation-grant.schema.json`](schemas/delegation-grant.schema.json)
+- [`authorization-request.schema.json`](schemas/authorization-request.schema.json)
+- [`authorization-decision.schema.json`](schemas/authorization-decision.schema.json)
+- [`physical-action-lease.schema.json`](schemas/physical-action-lease.schema.json)
+
 ## Standards traceability
 
 The roadmap covers:
@@ -137,6 +154,18 @@ The roadmap covers:
 - ISO/IEC 42001, NIST AI RMF and AIUC-1 evidence mappings
 
 Traceability is not certification or protocol conformance. See [standards and adapters](docs/STANDARDS_AND_ADAPTERS.md).
+
+## Sovereign identity trust fabric
+
+The expansion architecture treats workforce IAM, PAM, workload identity, AI-agent delegation, governed RAG, biometric assurance and physical-AI actions as one verifiable chain of authority.
+
+- [Sovereign Identity Trust Fabric architecture](docs/SOVEREIGN_IDENTITY_TRUST_FABRIC.md)
+- [Open-core and commercial boundary](docs/OPEN_CORE_COMMERCIAL_BOUNDARY.md)
+- [Monorepo implementation plan](docs/MONOREPO_IMPLEMENTATION_PLAN.md)
+- [Apex product architecture and release boundaries](docs/APEX_PRODUCT_ARCHITECTURE.md)
+- [Flagship autonomous-maintenance case study](docs/FLAGSHIP_AUTONOMOUS_MAINTENANCE_CASE_STUDY.md)
+
+The architecture connects AgentIAM evidence to [GRC Claw](https://github.com/AAH20/GRC_Claw) and the [Robot Black Box](https://github.com/AAH20/robot-black-box). It is a target architecture and commercialization plan; the current repository remains a deterministic reference lab until the documented production gates are satisfied.
 
 ## KPIs and unit economics
 

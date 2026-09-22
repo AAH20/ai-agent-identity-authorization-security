@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentiam.dev/schemas/authorization-decision.schema.json",
+  "title": "AgentIAM Authorization Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision_id", "request_id", "decision", "reason", "policy_revision", "decided_at", "expires_at", "obligations", "evidence_digest"],
+  "properties": {
+    "decision_id": {"type": "string", "minLength": 3},
+    "request_id": {"type": "string", "minLength": 3},
+    "decision": {"enum": ["ALLOW", "DENY", "REQUIRE_APPROVAL"]},
+    "reason": {"type": "string", "minLength": 1},
+    "policy_revision": {"type": "string", "minLength": 1},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "obligations": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "evidence_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

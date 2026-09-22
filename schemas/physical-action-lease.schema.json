@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentiam.dev/schemas/physical-action-lease.schema.json",
+  "title": "AgentIAM Physical Action Lease",
+  "description": "Short-lived authorization lease for a specific physical action. An independent safety controller remains mandatory.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lease_id", "principal_id", "robot_id", "delegation_id", "action", "operating_domain", "model_digest", "policy_revision", "issued_at", "expires_at", "decision_id", "evidence_digest"],
+  "properties": {
+    "lease_id": {"type": "string", "minLength": 3},
+    "principal_id": {"type": "string", "minLength": 3},
+    "robot_id": {"type": "string", "minLength": 3},
+    "delegation_id": {"type": "string", "minLength": 3},
+    "action": {"type": "string", "pattern": "^physical:"},
+    "operating_domain": {"type": "string", "minLength": 1},
+    "model_digest": {"type": "string", "minLength": 8},
+    "policy_revision": {"type": "string", "minLength": 1},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "decision_id": {"type": "string", "minLength": 3},
+    "evidence_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
