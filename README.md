@@ -167,6 +167,13 @@ The expansion architecture treats workforce IAM, PAM, workload identity, AI-agen
 
 The architecture connects AgentIAM evidence to [GRC Claw](https://github.com/AAH20/GRC_Claw) and the [Robot Black Box](https://github.com/AAH20/robot-black-box). It is a target architecture and commercialization plan; the current repository remains a deterministic reference lab until the documented production gates are satisfied.
 
+Two companion OSS repositories extend the contracts without merging market data or benchmark results into the authorization core:
+
+- [Egypt Digital Trust Map](https://github.com/AAH20/egypt-digital-trust-map) maintains a source-backed Egyptian player registry and integration profiles.
+- [Identity Fabric Benchmarks](https://github.com/AAH20/identity-fabric-benchmarks) applies non-compensating adversarial security gates and publishes a portable result contract.
+
+Both repositories mention planned A2ZSOC read-only views, while website implementation remains deferred.
+
 ## KPIs and unit economics
 
 The project defines identity, authorization, delegation, operational and commercial measures in [KPIs and unit economics](docs/KPIS_AND_UNIT_ECONOMICS.md).
